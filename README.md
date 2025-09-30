@@ -4,7 +4,7 @@
 
 **Название задания:** Тестовое задание для Frontend-разработчика
 
-**GitHub Pages:** [ссылка появится после деплоя]
+**GitHub Pages:** https://lexuniverse.github.io/GuiderTestProj/
 
 ---
 
