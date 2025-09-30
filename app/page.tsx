@@ -15,7 +15,7 @@ export default function Home() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   useEffect(() => {
-    const validBooks = booksData.filter((book: any) => {
+    const validBooks = (booksData as Book[]).filter((book) => {
       if (!book.date) {
         console.error(`Book "${book.title}" is missing required field: date`);
         return false;
@@ -23,7 +23,7 @@ export default function Home() {
       return true;
     });
 
-    setBooks(validBooks as Book[]);
+    setBooks(validBooks);
 
     const savedTags = sessionStorage.getItem('selectedTags');
     if (savedTags) {
@@ -38,7 +38,7 @@ export default function Home() {
   const allTags = useMemo(() => getAllTags(books), [books]);
 
   const displayedBooks = useMemo(() => {
-    let filtered = filterBooksByTags(books, selectedTags);
+    const filtered = filterBooksByTags(books, selectedTags);
     return sortBooks(filtered, sortBy, sortDirection);
   }, [books, selectedTags, sortBy, sortDirection]);
 
@@ -67,7 +67,6 @@ export default function Home() {
   };
 
   return (
-
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-5xl font-bold text-slate-800 mb-12 text-center">
@@ -91,7 +90,7 @@ export default function Home() {
             </div>
           </div>
 
-          <BookList books={displayedBooks}/>
+          <BookList books={displayedBooks} />
         </div>
       </div>
   );
