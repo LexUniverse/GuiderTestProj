@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+bookstore
+/bookstore
 /.pnp
 .pnp.*
 .yarn/*
